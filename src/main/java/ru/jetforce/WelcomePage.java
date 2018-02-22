@@ -23,6 +23,7 @@ public class WelcomePage extends WebPage implements Serializable {
         Form<?> form = new Form("form");
         final TextField<String> text = new TextField<String>("text", new PropertyModel<String>(user, "name"));
         text.setOutputMarkupId(true);
+        text.setOutputMarkupPlaceholderTag(true);
         final DropDownChoice<String> gender = new DropDownChoice<String>("gender",
                 new PropertyModel<String>(user, "gender"), genderChoices);
         gender.setOutputMarkupId(true);
@@ -31,11 +32,12 @@ public class WelcomePage extends WebPage implements Serializable {
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 super.onSubmit(target, form);
-                text.setEnabled(false);
-                gender.setEnabled(false);
+                if(text.isVisible()) text.setVisible(false);
+                else text.setVisible(true);
+             //   gender.setEnabled(false);
 
                 target.add(text);
-                target.add(gender);
+              //  target.add(gender);
             }
 
         };
