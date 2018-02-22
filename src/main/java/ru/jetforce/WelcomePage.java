@@ -1,57 +1,39 @@
 package ru.jetforce;
 
-import org.apache.wicket.ajax.AjaxRequestTarget;
-import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.model.Model;
+
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class WelcomePage extends WebPage implements Serializable {
 
-    private List<String> genderChoices = new ArrayList<>();
+    private String action;
 
-    public WelcomePage() {
-        genderChoices.add("Male");
-        genderChoices.add("Female");
-        final User user = new User();
-        Form<?> form = new Form("form");
-        final TextField<String> text = new TextField<String>("text", new PropertyModel<String>(user, "name"));
-        text.setOutputMarkupId(true);
-        text.setOutputMarkupPlaceholderTag(true);
-        final DropDownChoice<String> gender = new DropDownChoice<String>("gender",
-                new PropertyModel<String>(user, "gender"), genderChoices);
-        gender.setOutputMarkupId(true);
+    public WelcomePage(String pAction) {
 
-        AjaxButton button = new AjaxButton("submit") {
-            @Override
-            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-                super.onSubmit(target, form);
-                if(text.isVisible()) text.setVisible(false);
-                else text.setVisible(true);
-             //   gender.setEnabled(false);
+        this.action = pAction;
+        addComponents();
+    }
 
-                target.add(text);
-              //  target.add(gender);
-            }
+    private void addComponents(){
+        Form form = new Form<Object>("form");
+        Fragment fragment;
 
-        };
-       /* Button button = new Button("submit"){
-            @Override
-            public void onSubmit() {
-                super.onSubmit();
-                System.out.println("Name :" + user.getName());
-                System.out.println("Gender :" + user.getGender());
-            }
-        };*/
+        if(action.equalsIgnoreCase("view")){
+            fragment = new Fragment("container","viewFragment", this);
+            fragment.add(new Label("label", new Model<String>("Hello World!")));
+        }
+        else {
+            fragment = new Fragment("container","editFragment", this);
+            fragment.add(new TextField<String>("textfield", new Model<String>("Hello World!") ));
+        }
+        form.add(fragment);
         add(form);
-        form.add(text);
-        form.add(gender);
-        form.add(button);
     }
 }

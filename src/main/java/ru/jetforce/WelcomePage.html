@@ -9,15 +9,16 @@
 <h3>First page Wicket!</h3> <br/>
 
 <form wicket:id="form">
-
-<input type="text" wicket:id="text"><br/>
-    <select wicket:id="gender">
-        <option></option>
-    </select><br/>
-        <input type="submit" wicket:id="submit"/>
-
-
+    <div wicket:id="container"></div>
 </form>
+
+<wicket:fragment wicket:id="viewFragment">
+    <span wicket:id="label"> </span>
+</wicket:fragment>
+
+<wicket:fragment wicket:id="editFragment">
+    <input type="text" wicket:id="textfield"/>
+</wicket:fragment>
 
 </body>
 </html>

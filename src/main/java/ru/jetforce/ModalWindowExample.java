@@ -10,13 +10,15 @@ public class ModalWindowExample extends WebPage {
 
     private ModalWindow modalWindow;
 
+    private String action;
+
     public ModalWindowExample() {
 
         modalWindow = new ModalWindow("modalWindow");
         modalWindow.setPageCreator(new ModalWindow.PageCreator() {
             @Override
             public Page createPage() {
-                return new WelcomePage();
+                return new WelcomePage(action);
             }
         });
         modalWindow.setTitle("ModalWindowExample");
@@ -30,6 +32,14 @@ public class ModalWindowExample extends WebPage {
         add(new AjaxLink<String>("viewLink") {
             @Override
             public void onClick(AjaxRequestTarget target) {
+                action = "view";
+                modalWindow.show(target);
+            }
+        });
+        add(new AjaxLink<String>("editLink") {
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                action = "edit";
                 modalWindow.show(target);
             }
         });
