@@ -17,7 +17,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return ModalWindowExample.class;
+		return HomePage.class;
 	}
 
 	/**
@@ -27,6 +27,8 @@ public class WicketApplication extends WebApplication
 	public void init()
 	{
 		super.init();
+		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
+		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 
 		// add your configuration here
 	}
