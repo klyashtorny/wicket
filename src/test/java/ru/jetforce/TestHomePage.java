@@ -26,4 +26,13 @@ public class TestHomePage
 		//assert rendered page class
 		tester.assertRenderedPage(HomePage.class);
 	}
+
+	@Test
+	public void linkedPageRenderSuccessfully(){
+		//start and render the test page
+		tester.startPage(WelcomePage.class);
+		//assert rendered page class
+		tester.assertRenderedPage(WelcomePage.class);
+
+	}
 }
