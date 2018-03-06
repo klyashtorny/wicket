@@ -21,18 +21,10 @@ public class TestHomePage
 	public void homepageRendersSuccessfully()
 	{
 		//start and render the test page
-		tester.startPage(HomePage.class);
+		tester.startPage(Index.class);
 
 		//assert rendered page class
-		tester.assertRenderedPage(HomePage.class);
+		tester.assertRenderedPage(Index.class);
 	}
 
-	@Test
-	public void linkedPageRenderSuccessfully(){
-		//start and render the test page
-		tester.startPage(WelcomePage.class);
-		//assert rendered page class
-		tester.assertRenderedPage(WelcomePage.class);
-
-	}
 }
