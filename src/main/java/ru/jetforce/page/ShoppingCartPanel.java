@@ -1,4 +1,4 @@
-package ru.jetforce;
+package ru.jetforce.page;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import ru.jetforce.model.Cart;
+import ru.jetforce.model.Cheese;
 
 import java.io.Serializable;
 import java.text.NumberFormat;

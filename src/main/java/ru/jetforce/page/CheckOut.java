@@ -1,4 +1,4 @@
-package ru.jetforce;
+package ru.jetforce.page;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
+import ru.jetforce.model.Address;
+import ru.jetforce.model.Cart;
 
 public class CheckOut extends CheesrPage {
     public CheckOut() {

@@ -1,4 +1,4 @@
-package ru.jetforce;
+package ru.jetforce.model;
 
 import java.io.Serializable;
 

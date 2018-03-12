@@ -3,6 +3,7 @@ package ru.jetforce;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
+import ru.jetforce.page.Index;
 
 /**
  * Simple test using the WicketTester

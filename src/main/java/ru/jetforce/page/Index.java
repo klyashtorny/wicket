@@ -1,12 +1,15 @@
-package ru.jetforce;
+package ru.jetforce.page;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxFallbackLink;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import ru.jetforce.model.Cheese;
 
 public class Index extends CheesrPage  {
 
@@ -31,8 +34,14 @@ public class Index extends CheesrPage  {
 
                     }
                 });
-
+                /**
+                 * Add a link to cheese details
+                 */
+                PageParameters params = new PageParameters();
+                params.add("name", cheese.getName().toLowerCase());
+                item.add(new BookmarkablePageLink("details", CheesrDetails.class, params));
             }
+
         };
         add(cheeses);
         add(new PagingNavigator("navigator", cheeses));
